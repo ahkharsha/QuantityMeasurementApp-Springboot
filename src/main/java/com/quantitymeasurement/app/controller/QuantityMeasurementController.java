@@ -35,6 +35,12 @@ public class QuantityMeasurementController {
     @Autowired
     private IQuantityMeasurementService service;
 
+    @GetMapping("/status")
+    @Operation(summary = "Check deployment status")
+    public ResponseEntity<String> getStatus() {
+        return ResponseEntity.ok("Jenkins Automated Deployment is working! Hello from AWS Cloud!");
+    }
+
     @PostMapping("/compare")
     @Operation(summary = "Compare two quantities")
     public ResponseEntity<QuantityMeasurementDTO> performComparison(@Valid @RequestBody QuantityInputDTO quantityInputDTO) {
