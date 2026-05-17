@@ -9,7 +9,7 @@ COPY src ./src
 # Make the wrapper executable
 RUN chmod +x ./mvnw
 # Build the application skipping tests to speed up deployment
-RUN ./mvnw clean package -DskipTests
+RUN ./mvnw -B clean package -DskipTests
 
 # Stage 2: Run the application
 FROM eclipse-temurin:21-jre-alpine
