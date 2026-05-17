@@ -56,6 +56,7 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
             case "KILOGRAM" -> value;
             case "GRAM" -> value / 1000.0;
             case "MILLIGRAM" -> value / 1000000.0;
+            case "POUND" -> value * 0.453592;
             case "TONNE" -> value * 1000.0;
             case "CELSIUS" -> value;
             case "FAHRENHEIT" -> (value - 32.0) * 5.0 / 9.0;
@@ -94,6 +95,7 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
             case "KILOGRAM" -> baseValue;
             case "GRAM" -> baseValue * 1000.0;
             case "MILLIGRAM" -> baseValue * 1000000.0;
+            case "POUND" -> baseValue / 0.453592;
             case "TONNE" -> baseValue / 1000.0;
             case "CELSIUS" -> baseValue;
             case "FAHRENHEIT" -> (baseValue * 9.0 / 5.0) + 32.0;
