@@ -55,6 +55,7 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
             case "MILLILITER" -> value / 1000.0;
             case "KILOGRAM" -> value;
             case "GRAM" -> value / 1000.0;
+            case "MILLIGRAM" -> value / 1000000.0;
             case "TONNE" -> value * 1000.0;
             case "CELSIUS" -> value;
             case "FAHRENHEIT" -> (value - 32.0) * 5.0 / 9.0;
@@ -92,6 +93,7 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
             case "MILLILITER" -> baseValue * 1000.0;
             case "KILOGRAM" -> baseValue;
             case "GRAM" -> baseValue * 1000.0;
+            case "MILLIGRAM" -> baseValue * 1000000.0;
             case "TONNE" -> baseValue / 1000.0;
             case "CELSIUS" -> baseValue;
             case "FAHRENHEIT" -> (baseValue * 9.0 / 5.0) + 32.0;
@@ -148,7 +150,13 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
 
             switch (opType) {
                 case COMPARE:
-                    resultStr = (Math.abs(base1 - base2) <= 0.001) ? "Equal" : "Not Equal";
+                    if (Math.abs(base1 - base2) <= 0.001) {
+                        resultStr = "Equal";
+                    } else if (base1 > base2) {
+                        resultStr = "Greater";
+                    } else {
+                        resultStr = "Lesser";
+                    }
                     break;
                 case ADD:
                     resultVal = base1 + base2;
